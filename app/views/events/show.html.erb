@@ -1,0 +1,21 @@
+
+<br><br>
+
+<%= @event.title %>
+<br><br>
+<%= @event.genre.name %>
+<br><br>
+<%= @event.time %>
+<br><br>
+<%= link_to @event.link %>
+<br><br>
+<%= @event.description %>
+<br><br>
+
+
+
+
+<% if @event.user == current_user %>
+  <%= link_to "Edit Event", edit_event_path(@event) %>
+  <%= link_to "Delete Event", event_path(@event), method: :delete  %>
+<% end %>
