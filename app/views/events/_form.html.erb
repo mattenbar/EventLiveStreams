@@ -20,10 +20,13 @@
   <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Select Genre" %>
   <br><br>
 
- 
-
+  <%= f.label "Or make your own:" %>
   <br><br>
+  <%= f.fields_for :genre, @event.genre do |gf| %>
+    <%= gf.label :name %>
+    <%= gf.text_field :name, value: nil %>
+    <br>
+    <br>
+    <% end %>
   <%= f.submit %>
-
-
 <% end %>

@@ -3,6 +3,7 @@ class EventsController < ApplicationController
 
   def new
    @event = Event.new
+   @event.build_genre
   end
 
   def create
@@ -53,6 +54,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :link, :time, :description, :genre_id)
+    params.require(:event).permit(:title, :link, :time, :description, :genre_id, genre_attributes: [:name])
   end
 end
