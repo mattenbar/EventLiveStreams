@@ -6,4 +6,9 @@ module ApplicationHelper
   def logged_in?
     !!session[:user_id]
   end
+
+  def featured_event
+    @featured_event = Event.all.sample
+  end
+  
 end

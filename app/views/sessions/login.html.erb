@@ -1,6 +1,7 @@
 <h1>Log In</h1>
 
-<%= render partial: 'layouts/errors', locals: {object: @user} %>
+<%= flash[:error] %>
+<br><br>
 
 <%= form_for @user, url: '/login'  do |f| %>
   

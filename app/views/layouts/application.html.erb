@@ -10,7 +10,11 @@
   </head>
 
   <body>
-  <%= link_to 'Log Out', logout_path, method: :delete %>
+  <%=link_to 'Home', '/home' %>
+  <%=link_to 'Events', events_path %>
+  <%=link_to 'Create Events', new_event_path %>
+  <%= link_to 'Log Out', logout_path, method: :delete %> 
+ 
     <%= yield %>
   </body>
 </html>

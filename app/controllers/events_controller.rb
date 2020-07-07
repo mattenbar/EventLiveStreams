@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-   before_action :check_for_logged_in, except: [:index]
+   before_action :check_for_logged_in
 
   def new
    @event = Event.new
