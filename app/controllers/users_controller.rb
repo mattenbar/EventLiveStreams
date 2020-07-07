@@ -18,6 +18,11 @@ class UsersController < ApplicationController
     @user = User.find_by(:id => params[:id])
   end
 
+  def profile
+    @user = User.find_by(:id => current_user.id)
+    render :show
+  end
+
   private
 
   def user_params

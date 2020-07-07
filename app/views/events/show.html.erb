@@ -1,17 +1,18 @@
 
 <br><br>
 
-<%= @event.title %>
+Title: <%= @event.title.upcase %>
+<ul>
+Genre: <%= @event.genre.name.capitalize %>
 <br><br>
-<%= @event.genre.name %>
+Date: <%= @event.time.strftime("%A %B %d") %>
 <br><br>
-<%= @event.time %>
+Time: <%= @event.time.strftime("%l:%M %p %Z") %>
 <br><br>
-<%= link_to @event.link %>
+Link: <%= link_to @event.link %>
 <br><br>
-<%= @event.description %>
-<br><br>
-
+Description: <%= @event.description %>
+</ul>
 
 
 

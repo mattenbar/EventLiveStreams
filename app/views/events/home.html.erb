@@ -6,7 +6,7 @@
   <ul>
   <h3><%= link_to featured_event.title, "/events/#{@featured_event.id}"%></h3>
   
-  Genre: <%= @featured_event.genre.name %> <br>
+  Genre: <%= @featured_event.genre.name.capitalize %> <br>
   Date: <%= @featured_event.time.strftime("%A %B %d") %> <br>
   Time: <%= @featured_event.time.strftime("%l:%M %p %Z") %> <br>
   
