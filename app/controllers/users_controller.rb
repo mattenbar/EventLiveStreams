@@ -19,8 +19,13 @@ class UsersController < ApplicationController
   end
 
   def profile
+    if logged_in?
+    @events = Event.where(user_id: current_user.id)
     @user = User.find_by(:id => current_user.id)
     render :show
+    else
+      redirect_to '/'
+    end
   end
 
   private

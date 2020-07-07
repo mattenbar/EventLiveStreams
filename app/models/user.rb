@@ -10,5 +10,5 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  
+  scope :user_events, -> {where(user_id: current_user.id)}
 end

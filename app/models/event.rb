@@ -13,4 +13,6 @@ class Event < ApplicationRecord
     self.genre = genre if genre.valid? || !self.genre
  end
 
+ 
+
 end
