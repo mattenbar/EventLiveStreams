@@ -4,4 +4,8 @@ class Genre < ApplicationRecord
 
   validates :name, presence: true
   validates :name, uniqueness: true
+
+
+  scope :order_genres, -> {order(:name)}
+  
 end

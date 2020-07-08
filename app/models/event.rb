@@ -13,6 +13,7 @@ class Event < ApplicationRecord
     self.genre = genre if genre.valid? || !self.genre
  end
 
- 
+
+ scope :order_by_title, -> {order("lower(title) ASC")}
 
 end

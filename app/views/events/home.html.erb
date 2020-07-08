@@ -1,10 +1,11 @@
 <h1>Welcome to Event Live Streams</h1>
+
 <div class="container">
 
-  <br>
+  
   <h2>Featured Event:<br></h2>
   <ul>
-  <h3><%= link_to featured_event.title, "/events/#{@featured_event.id}"%></h3>
+  <h3><%= link_to featured_event.title.upcase, "/events/#{@featured_event.id}"%></h3>
   
   Genre: <%= @featured_event.genre.name.capitalize %> <br>
   Date: <%= @featured_event.time.strftime("%A %B %d") %> <br>

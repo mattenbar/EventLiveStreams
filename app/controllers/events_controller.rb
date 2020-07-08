@@ -17,7 +17,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @events = Event.order_by_title
   end
 
   def show

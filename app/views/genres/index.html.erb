@@ -1,1 +1,8 @@
-<h1> All genres go here </h1>
+<h1> Genres: </h1>
+
+
+<ul>
+<% @genres.each do |genre| %>
+    <p><%= link_to genre.name.capitalize, genre_path(genre) %> 
+<% end %>
+</ul>

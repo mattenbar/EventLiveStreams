@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   
 
   resources :favorites
-  resources :genres, only: [:new, :create]
+  resources :genres, only: [:new, :create, :index, :show]
   resources :events
   resources :users, only: [:new, :create, :show]
   

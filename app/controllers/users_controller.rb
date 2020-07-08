@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to events_path
+      redirect_to '/home'
     else
       render :new
     end
@@ -20,8 +20,8 @@ class UsersController < ApplicationController
 
   def profile
     if logged_in?
-    @events = Event.where(user_id: current_user.id)
-    @user = User.find_by(:id => current_user.id)
+    @events = Event.where(user_id: current_user.id).order("lower(title) ASC")
+    @user = User.find_by(id: current_user.id)
     render :show
     else
       redirect_to '/'
