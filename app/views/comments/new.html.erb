@@ -1,0 +1,12 @@
+<h1>Add Comment for <%= @comment.event.title %></h1>
+
+<%= form_for [@event, @comment] do |f|%>
+  <%= f.hidden_field :event_id%>
+  <div>
+    <%= f.label :comment%>
+    <%= f.text_area :content%>
+  </div>
+
+  <br>
+  <%= f.submit "Add Comment" %>
+<% end %>

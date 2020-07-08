@@ -1,0 +1,10 @@
+<h1>Here are the comments for: <%= @event.title.titleize%></h1>
+
+
+<ul>
+  <% @comments.each do |c|%>
+    <li>
+    <%=c.commenter.user_name%> says: <%= c.content %>  
+    </li>
+  <% end %>
+</ul>

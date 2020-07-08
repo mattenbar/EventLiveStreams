@@ -3,6 +3,8 @@ class Event < ApplicationRecord
   belongs_to :genre
   
   has_many :favorites
+  has_many :comments
+  has_many :commenters, through: :comments, source: :commenter
 
   validates :title, :time, :link, presence: true
   validates :genre_id, presence: true
