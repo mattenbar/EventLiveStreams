@@ -1,3 +1,6 @@
-<h1>Welcome <%= @user.user_name.capitalize %></h1>
+<h1>Welcom, <%= @user.user_name.downcase %></h1>
 
-<%= render 'events/events' %>
+<br><br>
+<h3>Here is a list of your events:</h3>
+<br>
+<h4><%= render 'events/events' %><h4>

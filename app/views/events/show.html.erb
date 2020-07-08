@@ -1,24 +1,24 @@
-
-<br><br>
-
-Title: <%= @event.title.upcase %>
+<h1>Title: <%= @event.title.titleize%></h1>
+<br>
 <ul>
-Genre: <%= @event.genre.name.capitalize %>
-<br><br>
-Date: <%= @event.time.strftime("%A %B %d") %>
-<br><br>
-Time: <%= @event.time.strftime("%l:%M %p %Z") %>
-<br><br>
-Link: <%= link_to @event.link %>
-<br><br>
-Description: <%= @event.description %>
+<h5><b>Genre: <%= @event.genre.name.titleize %></b></h5>
+<br>
+<h5><b>Date: <%= @event.time.strftime("%A, %B %d") %></b></h5>
+<br>
+<h5><b>Time: <%= @event.time.strftime("%l:%M %p %Z") %></b></h5>
+<br>
+<h5><b>Link: <%= link_to @event.link %></b></h5>
+<br>
+<h5><b>Description:</b></h5><%= @event.description %>
 </ul>
+<br><br>
 
 
 
 
 
 <% if @event.user == current_user %>
-  <%= link_to "Edit Event", edit_event_path(@event) %>
-  <%= link_to "Delete Event", event_path(@event), method: :delete  %>
+  <button type="button" class="btn btn-outline-primary"><%= link_to "Edit Event", edit_event_path(@event) %></button>
+  <button type="button" class="btn btn-outline-primary"><%= link_to "Delete Event", event_path(@event), method: :delete  %></button>
+  
 <% end %>

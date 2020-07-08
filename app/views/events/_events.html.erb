@@ -1,5 +1,5 @@
 <ul>
 <% @events.each do |event| %>
-    <p><%= link_to event.title.capitalize, event_path(event) %> 
+    <p><%= link_to event.title.titleize, event_path(event) %> 
 <% end %>
 </ul>
