@@ -22,6 +22,7 @@ class EventsController < ApplicationController
 
   def show
     set_event
+    @comments = @event.comments
   end
 
   def edit

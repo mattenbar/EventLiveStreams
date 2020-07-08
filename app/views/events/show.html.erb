@@ -12,7 +12,16 @@
 <h5><b>Description:</b></h5><%= @event.description %>
 </ul>
 <br><br>
-<%= link_to 'Leave a Comments', new_event_comment_path(@event.id) %>
+<h3>Comments:</h3>
+<ul>
+  <% @comments.each do |c|%>
+    <li>
+    <%=c.commenter.user_name%> says: <%= c.content %>  
+    </li>
+  <% end %>
+</ul>
+<br>
+<%= link_to 'Leave a Comment', new_event_comment_path(@event.id) %>
 <br>
 <%= link_to 'View All Comments', event_comments_path(@event.id) %>
 
