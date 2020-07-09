@@ -7,14 +7,27 @@
 <br>
 
     <div>
+    <h4>Event Search Results</h4>
       <ul>
-        <% @events.each do |event| %>
+        <% if @events.empty? %>
+          <br>
+          No results found
+        <% else%>
+          <% @events.each do |event| %>
             <li><%= link_to event.title, event_path(event) %></li>
+          <% end %>
+        <% end %>
+      </ul>
+      <h4>Genre Search Results</h4>
+      <ul>
+        
+        <% @genres.each do |genre| %>
+            <li><%= link_to genre.name, genre_path(genre) %></li>
         <% end %>
       </ul>
     </div>
     
-    <br></br>
-    <br></br>
+    <br><br>
+    <br><br>
 
 </div>

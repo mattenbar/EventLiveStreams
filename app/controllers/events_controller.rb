@@ -54,7 +54,13 @@ class EventsController < ApplicationController
         %i(title description time link)
         .map { |field| Event.arel_table[field].matches("%#{params[:search]}%")}
         .inject(:or)
-        )    
+        )   
+
+        @genres = Genre.where(
+          %i(name)
+          .map { |field| Genre.arel_table[field].matches("%#{params[:search]}%")}
+          .inject(:or)
+          )
    
 end
 

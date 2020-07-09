@@ -1,4 +1,6 @@
 <h1>Add Comment for <%= @comment.event.title %></h1>
+<br>
+<%= render partial: 'layouts/errors', locals: {object: @comment} %>
 
 <%= form_for [@event, @comment] do |f|%>
   <%= f.hidden_field :event_id%>
