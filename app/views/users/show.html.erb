@@ -1,6 +1,14 @@
-<h1>Welcom, <%= @user.user_name.downcase %></h1>
+<h1>Welcome, <%= @user.user_name.downcase %></h1>
 
 <br><br>
 <h3>Here is a list of your events:</h3>
 <br>
 <h4><%= render 'events/events' %><h4>
+<br><br>
+<h3>Here is a list of your favorited events:</h3>
+<br>
+<ul>
+<% @favorites.each do |event| %>
+    <h4><%= link_to event.title.titleize, event_path(event) %></h4>
+<% end %>
+</ul>

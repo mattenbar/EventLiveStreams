@@ -22,6 +22,7 @@ class EventsController < ApplicationController
 
   def show
     set_event
+    @favorite = Favorite.new
     @comments = @event.comments
   end
 
@@ -43,6 +44,19 @@ class EventsController < ApplicationController
     @event.destroy
     redirect_to events_path
   end
+
+  def search
+    # @events = Event.order_by_date.where("(title || about_content || category) LIKE ?", "%" + params[:search] + "%")
+    # ^case sensitive^ or (below) can only search one attr/field
+    # @events = Event.order_by_date.where(Event.arel_table[:title].matches("%#{params[:search]}%")) #https://www.scimedsolutions.com/blog/arel-part-i-case-insensitive-searches-with-partial-matching
+  
+    @events = Event.where(
+        %i(title description time link)
+        .map { |field| Event.arel_table[field].matches("%#{params[:search]}%")}
+        .inject(:or)
+        )    
+   
+end
 
 
   private

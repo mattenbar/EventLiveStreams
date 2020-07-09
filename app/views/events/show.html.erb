@@ -11,6 +11,19 @@
 <br>
 <h5><b>Description:</b></h5><%= @event.description %>
 </ul>
+
+<% if !!(Favorite.where(event_id: @event.id, user_id: current_user.id) != []) %> 
+  <%= button_to "Unfavorite", "/favorites/#{params[:id]}", method: :delete %>
+ <% else %>
+    <%= form_for @favorite do |f|%>
+      <%= f.hidden_field :event_id, value: params[:id] %>
+      <%= f.submit "Favorite This Event" %>
+    <%end%>
+  <%end%>
+  <br>
+
+
+
 <br><br>
 <h3>Comments:</h3>
 <ul>

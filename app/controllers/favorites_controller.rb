@@ -1,19 +1,21 @@
 class FavoritesController < ApplicationController
-  belongs_to :user
-  belongs_to :event
+  
 
   def new
     @favorite = Favorite.new
   end
 
   def create
-    @favorite = current_user.favorite.build(user_id: current_user.id, event_id: params[:id])
+    @fav = Favorite.new(event_id: params[:favorite][:event_id])
+    @fav.user_id = current_user.id
+    @fav.save
+    redirect_to "/events/#{params[:favorite][:event_id]}"
   end
 
   def destroy
-    set_event
-    @event.destroy
-    redirect_to events_path
+    fav = Favorite.where(event_id: params[:id], user_id: current_user.id)
+    fav.each {|fav| fav.destroy}
+    redirect_to "/events/#{params[:id]}"
   end
 
 end

@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     if logged_in?
     @events = Event.where(user_id: current_user.id).order("lower(title) ASC")
     @user = User.find_by(id: current_user.id)
+    @favorites = @user.favorited_events.order("lower(title) ASC")
     render :show
     else
       redirect_to '/'

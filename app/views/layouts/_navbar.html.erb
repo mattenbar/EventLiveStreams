@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/home">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/profile">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/genres">Genres</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/events">Events</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/events/new">Create Event</a>
+      </li>
+      <li>
+      <a class="nav-link" <%= link_to 'Log Out', logout_path, method: :delete %> </a>
+      </li>
+    <li class="nav justify-content-end">
+       <%= form_tag ('/search'), :method => "get" do %>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag("Search", :name => nil) %>
+      <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>

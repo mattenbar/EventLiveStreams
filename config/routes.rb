@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
   get '/auth/facebook/callback' => 'sessions#fbcreate'
+  get 'search', to: "events#search"
   
-  resources :comments
-  resources :favorites
+  
+  resources :favorites, only: [:new, :create, :destroy]
   resources :genres, only: [:new, :create, :index, :show]
   resources :events
   resources :users, only: [:new, :create, :show]

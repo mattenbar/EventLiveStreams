@@ -1,0 +1,20 @@
+  
+<div>
+<br>
+    <div>
+        <h1>Search Results</h1>
+    </div>
+<br>
+
+    <div>
+      <ul>
+        <% @events.each do |event| %>
+            <li><%= link_to event.title, event_path(event) %></li>
+        <% end %>
+      </ul>
+    </div>
+    
+    <br></br>
+    <br></br>
+
+</div>
