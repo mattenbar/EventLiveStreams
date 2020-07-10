@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_08_181029) do
+ActiveRecord::Schema.define(version: 2020_07_10_224301) do
+
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -30,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_181029) do
     t.integer "genre_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "artist_id"
     t.index ["genre_id"], name: "index_events_on_genre_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end

@@ -15,12 +15,27 @@
   <%= f.label :description %>
   <%= f.text_area :description %>
   <br><br>
+  <%= f.label :artist_id, "Select an Artist" %>
+  <%= f.collection_select :artist_id, Artist.all, :id, :name, prompt: "Select Artist" %>
+  <br><br>
 
+  <%= f.label "Or create new artist:" %>
+  
+  <br><br>
+  <%= f.fields_for :artist, @event.artist do |af| %>
+    <%= af.label :name %>
+    <%= af.text_field :name, value: nil %>
+    <br>
+    <br>
+    <% end %>
+  <br><br>
+  
   <%= f.label :genre_id, "Select a Genre" %>
   <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "Select Genre" %>
   <br><br>
 
   <%= f.label "Or create new genre:" %>
+  
   <br><br>
   <%= f.fields_for :genre, @event.genre do |gf| %>
     <%= gf.label :name %>

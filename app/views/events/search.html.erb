@@ -20,10 +20,25 @@
       </ul>
       <h4>Genre Search Results</h4>
       <ul>
-        
+        <% if @genres.empty? %>
+          <br>
+          No results found
+        <% else%>
         <% @genres.each do |genre| %>
             <li><%= link_to genre.name, genre_path(genre) %></li>
         <% end %>
+        <% end %>
+      </ul>
+      <h4>Genre Search Results</h4>
+      <ul>
+        <% if @artists.empty? %>
+          <br>
+          No results found
+        <% else%>
+        <% @artists.each do |artist| %>
+            <li><%= link_to artist.name, artist_path(artist) %></li>
+        <% end %>
+      <% end %>
       </ul>
     </div>
     

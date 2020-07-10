@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  
   root 'sessions#home'
   get '/home' => 'events#home'
   get '/profile' => 'users#profile'
@@ -9,11 +10,13 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
   get '/auth/facebook/callback' => 'sessions#fbcreate'
   get 'search', to: "events#search"
+
   
-  
+  resources :events
+  resources :artists, only: [:new, :create, :index, :show]
   resources :favorites, only: [:new, :create, :destroy]
   resources :genres, only: [:new, :create, :index, :show]
-  resources :events
+  
   resources :users, only: [:new, :create, :show]
 
   resources :events do

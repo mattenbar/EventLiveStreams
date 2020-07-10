@@ -4,11 +4,12 @@ class EventsController < ApplicationController
   def new
    @event = Event.new
    @event.build_genre
+   @event.build_artist
+  
   end
 
   def create
     @event = current_user.events.build(event_params)
-    
     if @event.save
       redirect_to event_path(@event)
     else
@@ -46,23 +47,24 @@ class EventsController < ApplicationController
   end
 
   def search
-    # @events = Event.order_by_date.where("(title || about_content || category) LIKE ?", "%" + params[:search] + "%")
-    # ^case sensitive^ or (below) can only search one attr/field
-    # @events = Event.order_by_date.where(Event.arel_table[:title].matches("%#{params[:search]}%")) #https://www.scimedsolutions.com/blog/arel-part-i-case-insensitive-searches-with-partial-matching
-  
     @events = Event.where(
-        %i(title description time link)
-        .map { |field| Event.arel_table[field].matches("%#{params[:search]}%")}
-        .inject(:or)
-        )   
+      %i(title description time link)
+      .map { |field| Event.arel_table[field].matches("%#{params[:search]}%")}
+      .inject(:or)
+    )   
 
-        @genres = Genre.where(
-          %i(name)
-          .map { |field| Genre.arel_table[field].matches("%#{params[:search]}%")}
-          .inject(:or)
-          )
-   
-end
+    @genres = Genre.where(
+      %i(name)
+      .map { |field| Genre.arel_table[field].matches("%#{params[:search]}%")}
+      .inject(:or)
+    )
+
+    @artists = Artist.where(
+      %i(name)
+      .map { |field| Artist.arel_table[field].matches("%#{params[:search]}%")}
+      .inject(:or)
+    )
+  end
 
 
   private
@@ -75,6 +77,6 @@ end
   end
 
   def event_params
-    params.require(:event).permit(:title, :link, :time, :description, :genre_id, genre_attributes: [:name])
+    params.require(:event).permit(:title, :link, :time, :description, :artist_id, :genre_id, genre_attributes: [:name], artist_attributes: [:name])
   end
 end

@@ -1,6 +1,8 @@
 <h1>Title: <%= @event.title.titleize%></h1>
 <br>
 <ul>
+<h5><b>Artist: <%= @event.artist.name.titleize %></b></h5>
+<br>
 <h5><b>Genre: <%= @event.genre.name.titleize %></b></h5>
 <br>
 <h5><b>Date: <%= @event.time.strftime("%A, %B %d") %></b></h5>
